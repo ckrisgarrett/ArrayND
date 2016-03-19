@@ -19,8 +19,8 @@ public:
         __EQUALS
     }
     
-    Array__DIM(const ArrayBase<T> &that) = delete;
-    Array__DIM<T>& operator=(const ArrayBase<T> &that) = delete;
+    Array__DIM<T>(const Array__DIM<T> &that) = delete;
+    Array__DIM<T>& operator=(const Array__DIM<T> &that) = delete;
     
     inline
     T& operator()(__PARAMS2) const
@@ -32,6 +32,21 @@ public:
         }
         #endif
         return this->c_data[__INDEX];
+    }
+    
+    T* getData()
+    {
+        return this->c_data;
+    }
+    
+    const T* getData() const
+    {
+        return this->data;
+    }
+    
+    void getDims(T dims[__DIM]) const
+    {
+        __GETDIMS
     }
     
 private:
